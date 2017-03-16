@@ -1,5 +1,5 @@
 <div class="alerts col-xs-12 col-sm-6 col-md-4">
-    <div class="alert" ng-class="'alert-' + alert.type" ng-repeat="alert in alerts | filter: {closed: false}">
+    <div class="alert" ng-class="'alert-' + alert.type" ng-repeat="alert in alerts" ng-show="!alert.closed">
         <button class="close" ng-click="closeAlert($index)">&times;</button>
         {{alert.msg}}
     </div>
