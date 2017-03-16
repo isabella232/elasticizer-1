@@ -1,10 +1,10 @@
 {
   "name": "elasticizer",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "description": "For elasticization",
   "main": "index.js",
   "kibana": {
-    "version": "5.1.0"
+    "version": "kibana"
   },
   "scripts": {
     "lint": "eslint",
@@ -21,5 +21,13 @@
     "chai": "^3.5.0",
     "eslint": "1.10.3",
     "eslint-plugin-mocha": "1.1.0"
+  },
+  "dependencies": {
+    "angular-ui-codemirror": "^0.3.0",
+    "angular-ui-sortable": "^0.17.0",
+    "bootstrap": "^3.3.7",
+    "codemirror": "^5.24.2",
+    "elasticsearch-browser": "^12.1.3",
+    "jquery-ui": "^1.12.1"
   }
 }

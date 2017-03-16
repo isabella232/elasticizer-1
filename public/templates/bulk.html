@@ -1,0 +1,61 @@
+<bse-nav></bse-nav>
+<div class="container" ng-class="{faded: doc.spinning}">
+  <div class="row">
+    <h1 class="clearfix">
+      <span class="h1 text-muted">Bulk update</span>
+      <span class="pull-right form-inline">
+          <button type="button" class="btn btn-default" ng-click="back()"
+                  ng-disabled="doc.spinning">Back
+          </button>
+          <button type="button" class="btn btn-primary" ng-click="update()"
+                  ng-disabled="doc.spinning">Update
+          </button>
+      </span>
+    </h1>
+    <div>
+      <div class="well display-table">
+        <form name="searchForm" role="search" ng-submit="search()" class="form-inline display-tr">
+          <div class="form-group display-td">
+            <label for="index" class="sr-only">Index</label>
+            <select name="index" id="index" class="form-control" ng-model="query.index" disabled
+                    ng-options="k as k for (k, v) in elasticsearch.indices">
+              <option value="">Index</option>
+            </select>
+          </div>
+          <div class="form-group display-td">
+            <label for="type" class="sr-only">Type</label>
+            <select name="type" id="type" class="form-control" ng-model="query.type" disabled
+                    ng-options="k as k for (k, v) in elasticsearch.mappings[query.index].mappings">
+              <option value="">Type</option>
+            </select>
+          </div>
+          <div class="form-group display-td">
+            <label for="type" class="sr-only">Mode</label>
+            <select name="type" id="mode" class="form-control" ng-model="query.mode" ng-change="setRaw()"
+                    required>
+              <option value="doc">Doc (patch)</option>
+              <option value="script">Script (name)</option>
+            </select>
+          </div>
+          <div class="form-group display-td full-width">
+            <label for="id" class="sr-only">Query</label>
+            <input type="text" id="id" name="id" class="form-control" placeholder="Query" disabled
+                   ng-model="query.q"/>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="editorOptions.lineWrapping"/> Word wrap
+        </label>
+      </div>
+    </div>
+    <div>
+      <textarea id="doc" ui-codemirror ng-model="doc.raw" ui-codemirror-opts="editorOptions"
+                ng-class="{invalid: editor.error}"></textarea>
+    </div>
+  </div>
+</div>
+<bse-alerts></bse-alerts>

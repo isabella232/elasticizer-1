@@ -1,0 +1,90 @@
+<bse-nav></bse-nav>
+<div class="container">
+    <div class="row">
+        <div>
+            <h1 class="clearfix">
+                <span>Search</span>
+                <span class="pull-right">
+                    <button type="button" ng-click="new()" class="btn btn-default">New document</button>
+                    <button type="button" ng-click="bulk()" class="btn btn-default"
+                            ng-disabled="!results.hits.total">Bulk update results</button>
+                </span>
+            </h1>
+        </div>
+        <div class="well display-table">
+            <form name="searchForm" role="search" ng-submit="search()" class="form-inline display-tr">
+                <div class="form-group display-td">
+                    <label for="index" class="sr-only">Index</label>
+                    <select name="index" id="index" class="form-control" ng-model="query.index"
+                            ng-options="i.name as aliases(i) for i in elasticsearch.indexMap | orderBy: 'name'"
+                            ng-change="$route.updateParams({index: query.index})">
+                        <option value="">Any Index</option>
+                    </select>
+                </div>
+                <div class="form-group display-td">
+                    <label for="type" class="sr-only">Type</label>
+                    <select name="type" id="type" class="form-control" ng-model="query.type"
+                            ng-options="k as k for (k, v) in elasticsearch.mappings[query.index].mappings"
+                            ng-change="$route.updateParams({type: query.type})">
+                        <option value="">Any Type</option>
+                    </select>
+                </div>
+                <div class="form-group display-td">
+                    <label for="q" class="sr-only">Sort</label>
+                    <input type="text" id="sort" name="sort" class="form-control" placeholder="Sort"
+                           ng-model="query.sort" ng-change="$route.updateParams({sort: query.sort})"
+                           ng-model-options="{debounce: 500}"/>
+                    <div class="quickpick">
+                        <small>
+                            <button class="btn-link" ng-click="query.sort = 'timestamp:desc'">timestamp:desc</button>
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group display-td full-width">
+                    <label for="q" class="sr-only">Query</label>
+                    <input type="text" id="q" name="q" class="form-control" placeholder="Query" ng-model="query.q"
+                           ng-change="$route.updateParams({q: query.q})" ng-model-options="{debounce: 500}"/>
+                </div>
+                <button type="submit" class="btn btn-primary display-tc">Go</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="spinner" ng-show="spinning"></div>
+        <table class="table table-hover" ng-show="!spinning">
+            <caption>{{results.hits.total}} hit<span ng-show="results.hits.total !== 1">s</span> ({{results.took /
+                1000}} seconds)
+            </caption>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Timestamp</th>
+                <th class="col-md-2">Index</th>
+                <th class="col-md-2">Type</th>
+                <th class="col-md-1"></th>
+            </tr>
+            </thead>
+            <tr ng-repeat="hit in results.hits.hits">
+                <td><a ng-href="#/{{hit._index}}/{{hit._type}}/{{hit._id}}">{{hit._id}}</a></td>
+                <td>{{hit._source.timestamp | date: 'medium'}}</td>
+                <td>{{hit._index}}</td>
+                <td>{{hit._type}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-xs"
+                            ng-click="remove(hit, $index)">Delete
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <div class="text-center" ng-if="results.hits.total">
+            <p class="text-center">
+                <button type="button" class="btn btn-sm btn-default" ng-click="export()">Download result page</button>
+            </p>
+            <pagination total-items="results.hits.total" ng-model="pagination.currentPage" max-size="query.size"
+                        class="pagination-sm" num-pages="numPages"
+                        boundary-links="true" rotate="false" ng-change="search(pagination.currentPage)"></pagination>
+        </div>
+    </div>
+</div>
+<bse-alerts></bse-alerts>

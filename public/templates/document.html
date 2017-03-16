@@ -1,0 +1,69 @@
+<bse-nav></bse-nav>
+<div class="container">
+    <div class="row">
+        <h1 class="clearfix">
+            <span>
+                <a ng-href="#/search?index={{meta.index}}&from=0">{{meta.index || '(index)'}}</a> /
+                <a ng-href="#/search?index={{meta.index}}&type={{meta.type}}&from=0">{{meta.type || '(type)'}}</a> /
+                <span ng-if="!new">{{meta.id}}</span>
+                <span ng-if="new" class="text-muted">new document</span>
+            </span>
+            <span class="pull-right form-inline">
+                <button type="button" class="btn btn-primary" ng-click="save()"
+                        ng-disabled="!meta.index || !meta.type">Save</button>
+                <button type="button" class="btn btn-default" ng-click="reset()"
+                        ng-if="!new">Reset</button>
+            </span>
+        </h1>
+        <div ng-if="new">
+            <div class="well display-table">
+                <form name="searchForm" role="search" ng-submit="search()" class="form-inline display-tr">
+                    <div class="form-group display-td">
+                        <label for="index" class="sr-only">Index</label>
+                        <select name="index" id="index" class="form-control" ng-model="meta.index"
+                                ng-options="k as k for (k, v) in elasticsearch.indices" required>
+                            <option value="">Index</option>
+                        </select>
+                    </div>
+                    <div class="form-group display-td">
+                        <label for="type" class="sr-only">Type</label>
+                        <select name="type" id="type" class="form-control" ng-model="meta.type"
+                                ng-options="k as k for (k, v) in elasticsearch.mappings[meta.index].mappings" required>
+                            <option value="">Type</option>
+                        </select>
+                    </div>
+                    <div class="form-group display-td full-width">
+                        <label for="id" class="sr-only">Document ID</label>
+                        <input type="text" id="id" name="id" class="form-control" placeholder="Document ID"
+                               ng-model="meta.id" ng-disabled="settings.bulkCreate"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div ng-if="!new">_version: <strong>{{doc._version}}</strong></div>
+            <div ng-if="new">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="settings.createAnother"/> Create another
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="settings.bulkCreate"/> Bulk create
+                    </label>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="editorOptions.lineWrapping"/> Word wrap
+                </label>
+            </div>
+        </div>
+        <div>
+      <textarea id="doc" ui-codemirror ng-model="doc.raw" ui-codemirror-opts="editorOptions"
+                ng-class="{invalid: editor.error}"></textarea>
+        </div>
+    </div>
+</div>
+<bse-alerts></bse-alerts>
