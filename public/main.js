@@ -2,6 +2,7 @@ import CodeMirror from 'codemirror';
 import 'codemirror/mode/javascript';
 import 'elasticsearch-browser/elasticsearch.angular';
 import 'jquery-ui/ui/widgets/sortable';
+import 'angular-ui-bootstrap';
 import 'angular-ui-sortable';
 import 'angular-ui-codemirror';
 

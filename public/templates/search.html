@@ -81,9 +81,9 @@
             <p class="text-center">
                 <button type="button" class="btn btn-sm btn-default" ng-click="export()">Download result page</button>
             </p>
-            <pagination total-items="results.hits.total" ng-model="pagination.currentPage" max-size="query.size"
-                        class="pagination-sm" num-pages="numPages"
-                        boundary-links="true" rotate="false" ng-change="search(pagination.currentPage)"></pagination>
+            <div uib-pagination total-items="results.hits.total" ng-model="pagination.currentPage" max-size="query.size"
+                 class="pagination-sm" num-pages="numPages"
+                 boundary-links="true" rotate="false" ng-change="search(pagination.currentPage)"></div>
         </div>
     </div>
 </div>
