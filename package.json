@@ -1,6 +1,6 @@
 {
   "name": "elasticizer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "For elasticization",
   "main": "index.js",
   "kibana": {
