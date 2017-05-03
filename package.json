@@ -1,10 +1,11 @@
 {
   "name": "elasticizer",
-  "version": "2.0.1",
+  "dockerName": "elasticizer-kibana",
+  "version": "2.0.2",
   "description": "For elasticization",
   "main": "index.js",
   "kibana": {
-    "version": "kibana"
+    "version": "5.3.2"
   },
   "scripts": {
     "lint": "eslint",
