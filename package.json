@@ -1,7 +1,7 @@
 {
   "name": "elasticizer",
   "dockerName": "elasticizer-kibana",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "UI for editing documents in Kibana",
   "main": "index.js",
   "kibana": {
