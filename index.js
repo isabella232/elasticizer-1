@@ -7,9 +7,9 @@ export default function (kibana) {
         uiExports: {
             app: {
                 title: 'Elasticizer',
-                description: 'For elasticization',
-                main: 'plugins/elasticizer/main.js',
-                icon: 'plugins/elasticizer/assets/icon.svg'
+                description: 'UI for editing documents in Kibana',
+                main: 'plugins/elasticizer/main.js'
+                // , icon: 'plugins/elasticizer/assets/icon.svg'
             }
         },
         config(Joi) {
