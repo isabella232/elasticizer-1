@@ -1,6 +1,6 @@
 # elasticizer
 
-> For elasticization
+> UI for editing documents in Kibana
 
 ---
 
