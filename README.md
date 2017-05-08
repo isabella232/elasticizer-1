@@ -2,6 +2,9 @@
 
 > UI for editing documents in Kibana
 
+![Editing documents](https://preview.ibb.co/bZxk1Q/Screen_Shot_2017_05_08_at_13_53_58.png)
+![Editing aliases](https://preview.ibb.co/hNwOo5/Screen_Shot_2017_05_08_at_13_54_12.png)
+
 ---
 
 ## development
