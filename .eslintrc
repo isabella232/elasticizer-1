@@ -1,2 +1,6 @@
 ---
 extends: "@elastic/kibana"
+rules:
+  indent: 0
+globals:
+  angular: true

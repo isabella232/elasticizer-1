@@ -92,6 +92,19 @@ export default function (server) {
 
     server.route({
         path: '/elasticizer/api/{index}/{type}/{id}',
+        method: 'DELETE',
+        handler(req, reply) {
+            callWithRequest(req, 'delete', {
+                index: req.params.index,
+                type: req.params.type,
+                id: req.params.id,
+                body: req.payload
+            }).then(reply);
+        }
+    });
+
+    server.route({
+        path: '/elasticizer/api/{index}/{type}/{id}',
         method: 'GET',
         handler(req, reply) {
             callWithRequest(req, 'get', {
