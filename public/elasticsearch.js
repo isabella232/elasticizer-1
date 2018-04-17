@@ -162,7 +162,8 @@ module
                 lineNumbers: true,
                 smartIndent: true,
                 height: 'auto',
-                mode: 'javascript'
+                mode: 'javascript',
+                theme: 'neo'
             };
 
             $scope.meta = {

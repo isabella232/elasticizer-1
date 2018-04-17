@@ -1,4 +1,5 @@
 @import (less) "~codemirror/lib/codemirror.css";
+@import (less) "~codemirror/theme/neo.css";
 @import (reference) "~bootstrap/less/bootstrap";
 
 body {
@@ -158,14 +159,14 @@ input.new-alias {
 }
 
 .quickpick {
-  margin-bottom: -22px;
-
-  button {
-    padding-top: 0;
-  }
+  margin: -2px 5px -18px 5px;
 }
 
 .faded {
   opacity: 0.25;
   pointer-events: none;
+}
+
+pre {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace !important;
 }
