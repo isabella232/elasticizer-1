@@ -170,3 +170,58 @@ input.new-alias {
 pre {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace !important;
 }
+
+.form-fx-group {
+  margin-bottom: 1rem;
+}
+
+.form-fx-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.form-fx-row > .col,
+.form-fx-row > [class*="col-"] {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.col-fx-md-1, .col-fx-md-2, .col-fx-md-3, .col-fx-md-4, .col-fx-md-5, .col-fx-md-6, .col-fx-md-7, .col-fx-md-8, .col-fx-md-9, .col-fx-md-10, .col-fx-md-11, .col-fx-md-12, .col-fx-md,
+.col-fx-md-auto {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-fx-md-3 {
+  margin-bottom: 2.25rem;
+}
+
+@media (min-width: 768px) {
+  .col-fx-md {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  .col-fx-md-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .col-fx-md-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    margin-bottom: inherit;
+  }
+}

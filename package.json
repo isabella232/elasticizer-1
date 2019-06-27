@@ -1,10 +1,10 @@
 {
   "name": "elasticizer",
-  "version": "5.6.8-1",
+  "version": "5.6.16-1",
   "description": "UI for editing documents in Kibana",
   "main": "index.js",
   "kibana": {
-    "version": "5.6.8"
+    "version": "5.6.16"
   },
   "scripts": {
     "lint": "eslint",
@@ -16,17 +16,17 @@
   },
   "devDependencies": {
     "@elastic/eslint-config-kibana": "0.0.2",
-    "@elastic/plugin-helpers": "^6.0.0",
+    "@elastic/plugin-helpers": "^7.1.8",
     "babel-eslint": "^10.0.1",
     "chai": "^3.5.0",
-    "eslint": "^5.12.0",
+    "eslint": "^6.0.1",
     "eslint-plugin-mocha": "1.1.0"
   },
   "dependencies": {
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-codemirror": "^0.3.0",
     "angular-ui-sortable": "^0.17.0",
-    "bootstrap": "^3.4.0",
+    "bootstrap": "^3.4.1",
     "codemirror": "^5.24.2",
     "elasticsearch-browser": "^12.1.3",
     "jquery-ui": "^1.12.1"
